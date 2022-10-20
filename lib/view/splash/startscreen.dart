@@ -2,10 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sijam/view/customwidget/buttons/customSijambutton.dart';
 import 'package:sijam/routs/routs.dart';
-import 'package:sijam/view/auth/signup/register.dart';
-import 'package:sijam/view/controllers/controllers.dart';
-import 'package:sijam/view/customwidget/customButton.dart';
 
 class StartScreen extends GetView {
   const StartScreen({Key? key}) : super(key: key);
@@ -13,120 +11,77 @@ class StartScreen extends GetView {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Container(
-            color: Colors.white,
-            height: double.infinity,
-            width: double.infinity,
-            child: Column(children: [
-              Expanded(
-                child: Container(
-                  // ignore: sort_child_properties_last
-                  child: Container(
-                    height: double.infinity,
-                    width: double.infinity,
-                    // ignore: prefer_const_literals_to_create_immutables
-                    child: Column(children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20),
-                        child: Text("SIJAM",
-                            style: TextStyle(
-                                decoration: TextDecoration.none,
-                                fontSize: 30,
-                                color: Colors.white)),
-                      ),
-                      Spacer(),
-                      Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Text("WELCOME TO SIJAM",
-                            style: TextStyle(
-                                decoration: TextDecoration.none,
-                                fontSize: 18,
-                                color: Color(0xffF5FFFA))),
-                      ),
-                      Text("BUY SECURED LANDS",
-                          style: TextStyle(
-                              decoration: TextDecoration.none,
-                              fontSize: 12,
-                              color: Color(0xffF5FFFA))),
-                      Text("AT AFFORDABLE PRICES",
-                          style: TextStyle(
-                              decoration: TextDecoration.none,
-                              fontSize: 12,
-                              color: Color(0xffF5FFFA))),
-                      Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Text("LEARN MORE",
-                            style: TextStyle(
-                                decoration: TextDecoration.none,
-                                fontSize: 15,
-                                color: Color(0xffF5FFFA))),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Row(
-                          // ignore: prefer_const_literals_to_create_immutables
-                          children: [
-                            Divider(
-                              color: Colors.white,
-                            )
-                          ],
-                        ),
-                      )
-                    ]),
-                  ),
-                  decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(
-                          'assets/images/house.jpeg',
-                        ),
-                        fit: BoxFit.fitHeight,
-                      ),
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(30),
-                          bottomRight: Radius.circular(30))),
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                        width: 130,
-                        height: 30,
-                        child: CustomButtons.elevatedBuntton(
-                            backGroundcolor: Color(0xff00008B),
-                            onpress: (() {
-                              Get.toNamed(RoutesClass.login);
-                            }),
-                            text: Text(
-                              "SIGN IN",
-                              style: TextStyle(color: Colors.white),
-                            ))),
-                    SizedBox(
-                        width: 130,
-                        height: 30,
-                        child: CustomButtons.elevatedBuntton(
-                            backGroundcolor: Color(0xff00008B),
-                            onpress: (() {
-                              Get.toNamed(RoutesClass.register);
-                            }),
-                            text: Text(
-                              "SIGN UP",
-                              style: TextStyle(color: Colors.white),
-                            ))),
-                  ],
-                ),
-              ),
-            ]),
-          ),
-        ],
+        // ignore: prefer_const_literals_to_create_immutables
+        body: Stack(children: [
+      // Image.asset(
+      //   'assets/images/house.jpeg',
+      // )
+
+      Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/images/sijambgimage.png'),
+              fit: BoxFit.fill),
+        ),
       ),
-    );
+      // SingleChildScrollView(
+
+      // )
+
+      Padding(
+        padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          // mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Spacer(),
+            Image.asset('assets/images/sijamlogo.png'),
+            Text(
+              "Bienvenue sur Sijam",
+              style: TextStyle(
+                  color: Color(
+                    0xffFFFFFF,
+                  ),
+                  fontWeight: FontWeight.w700,
+                  fontSize: 28),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: Text(
+                "Achetez, louez des terrains titrés au cameroun\npar le biais de notre platforme, rapide et sécurisée.",
+                softWrap: true,
+                maxLines: 2,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Color(
+                      0xffFFFFFF,
+                    ).withOpacity(0.8),
+                    fontWeight: FontWeight.w500,
+                    fontSize: 13),
+              ),
+            ),
+            Spacer(),
+            CustomSijamButton(
+              onclick: () {
+                Get.toNamed(RoutesClass.getToLogin());
+                // NewLogin
+              },
+              buttonText: "Connexion",
+              buttonColor: Color(0xff013763),
+              textColor: Color(0xffF2F4F7),
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            CustomSijamButton(
+              buttonText: "S’inscrire",
+              buttonColor: Color(0xffF2F4F7),
+              textColor: Color(0xff7896B9),
+              onclick: () {},
+            )
+          ],
+        ),
+      )
+    ]));
   }
 }
