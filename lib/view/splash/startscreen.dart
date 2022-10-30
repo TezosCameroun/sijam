@@ -77,7 +77,9 @@ class StartScreen extends GetView {
               buttonText: "S’inscrire",
               buttonColor: Color(0xffF2F4F7),
               textColor: Color(0xff7896B9),
-              onclick: () {},
+              onclick: () {
+                Get.toNamed(RoutesClass.createAccount);
+              },
             )
           ],
         ),

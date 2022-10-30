@@ -12,6 +12,7 @@ class CustomFormField extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final String? Function(String?)? validator;
   final Widget? suffixIcon;
+  final bool? obscureText;
   CustomFormField(
       {Key? key,
       required this.hintText,
@@ -19,6 +20,7 @@ class CustomFormField extends StatelessWidget {
       this.validator,
       this.textEditingController,
       this.suffixIcon,
+      this.obscureText,
       required this.textInputType})
       : super(key: key);
 
@@ -29,6 +31,7 @@ class CustomFormField extends StatelessWidget {
       inputFormatters: inputFormatters,
       keyboardType: textInputType,
       validator: validator,
+      obscureText: obscureText ?? false,
       decoration: InputDecoration(
           suffixIcon: suffixIcon,
           hintText: hintText,
@@ -42,12 +45,12 @@ class CustomFormField extends StatelessWidget {
 }
 
 extension extString on String {
-  bool get isValidName {
+  bool get isValidEmail {
     final emailRegExp = RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
     return emailRegExp.hasMatch(this);
   }
 
-  bool get isValidEmail {
+  bool get isValidName {
     final nameRegExp = RegExp(
         r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!”#$%&’()*+,-./:;<=>?@[\]^_`{|}~])[A-Za-z\d!”#$%&’()*+,-./:;<=>?@[\]^_`{|}~]{8,}$');
     return nameRegExp.hasMatch(this);
